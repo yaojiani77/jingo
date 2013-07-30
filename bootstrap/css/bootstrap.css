@@ -1,3 +1,4 @@
+
 /*!
  * Bootstrap v3.0.0
  *
@@ -750,9 +751,7 @@ pre code {
   content: " ";
 }
 
-.row:after {
-  clear: both;
-}
+
 
 @media (min-width: 768px) {
   .row {
@@ -764,6 +763,11 @@ pre code {
 .row .row {
   margin-right: -15px;
   margin-left: -15px;
+}
+
+.row {
+  margin-left: -20px;
+  *zoom: 1;
 }
 
 .col-1,
@@ -1080,6 +1084,60 @@ pre code {
   .col-offset-11 {
     margin-left: 91.66666666666666%;
   }
+}
+.left{
+  float: left;
+  padding-right: 10px;
+  padding-left: 10px;
+
+}
+
+.span12 {
+  width: 940px;
+}
+
+.span11 {
+  width: 860px;
+}
+
+.span10 {
+  width: 780px;
+}
+
+.span9 {
+  width: 700px;
+}
+
+.span8 {
+  width: 620px;
+}
+
+.span7 {
+  width: 540px;
+}
+
+.span6 {
+  width: 460px;
+}
+
+.span5 {
+  width: 380px;
+}
+
+.span4 {
+  width: 300px;
+}
+
+.span3 {
+  width: 220px;
+}
+
+.span2 {
+  width: 140px;
+}
+
+.span1 {
+  width: 60px;
 }
 
 @media (min-width: 1200px) {

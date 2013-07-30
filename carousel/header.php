@@ -5,7 +5,7 @@ $user = 'yaojiani';
 $password = '66200535' ;
 
 
-$mysqli = new mysqli("127.0.0.1", $user, $password, $database_name);
+$mysqli = mysqli_connect("127.0.0.1", $user, $password, $database_name);
 
 /* check connection */
 if (mysqli_connect_errno()) {
