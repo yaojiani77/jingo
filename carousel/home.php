@@ -11,9 +11,11 @@ $result = $mysqli->query($query);
 
 while ($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){ ?>
 
-<!--Notes-->
+
 <div class="container">
-<div class="span8 well">
+
+<!--Notes-->
+<div class="span10 well">
 	<div class="row">
 		<div class="span1 left"><a href="#" class="thumbnail"><img src="../include/img/users/user.jpg" alt=""></a></div>
 		<div class="span5" >

@@ -2,8 +2,15 @@
 <head>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript">
+
+
+
+
+
 var geocoder = new google.maps.Geocoder();
+var latLng;
 
 function geocodePosition(pos) {
   geocoder.geocode({
@@ -22,12 +29,10 @@ function updateMarkerStatus(str) {
 }
 
 function updateMarkerPosition(latLng) {
-  document.getElementById("lat2").value=latLng.lat();
-  document.getElementById("log2").value=latLng.lng();
-  //document.getElementById('info').innerHTML = [
-  //  latLng.lat(),
-  //  latLng.lng()
- // ].join(', ');
+  document.getElementById("lat").value=latLng.lat();
+  document.getElementById("lng").value=latLng.lng();
+
+
 }
 
 function updateMarkerAddress(str) {
@@ -35,7 +40,7 @@ function updateMarkerAddress(str) {
 }
 
 function initialize() {
-  var latLng = new google.maps.LatLng(40.7257393, -74.0061891);
+ latLng = new google.maps.LatLng(40.7257393, -74.0061891);
   var map = new google.maps.Map(document.getElementById('mapCanvas'), {
     zoom: 14,
     center: latLng,
@@ -70,6 +75,8 @@ function initialize() {
 
 // Onload handler to fire off the app.
 google.maps.event.addDomListener(window, 'load', initialize);
+
+
 </script>
 </head>
 <body>
@@ -91,10 +98,10 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
   <div class="container">
 
-  <form action="filter_page.php" method="post">
+  <form action="insert_note.php" method="post">
   <div id="mapCanvas"></div>
 
-  <div id="infoPanel" style="display:none">
+  <div id="infoPanel" style="display:none" >
     <b>Marker status:</b>
     <div id="markerStatus"><i>Click and drag the marker.</i></div>
     <b>Current position:</b>

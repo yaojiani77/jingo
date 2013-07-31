@@ -55,7 +55,7 @@ if (mysqli_connect_errno()) {
             <a class="navbar-brand" href="#">Project name</a>
             <div class="nav-collapse collapse">
               <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
+                <li class="active"><a href="home.php">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li class="dropdown">
@@ -70,7 +70,7 @@ if (mysqli_connect_errno()) {
                     <li><a href="#">One more separated link</a></li>
                   </ul>
                 </li>
-                <li><a href="#email"><?php echo $email ;?></a></li>
+                <li><a href="user.php"><?php echo $email ;?></a></li>
                 <li><a href="signout.php">Sign out</a></li>
               </ul>
             </div>
