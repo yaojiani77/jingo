@@ -1,7 +1,8 @@
+<!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript">
 
@@ -29,8 +30,8 @@ function updateMarkerStatus(str) {
 }
 
 function updateMarkerPosition(latLng) {
-  document.getElementById("lat").value=latLng.lat();
-  document.getElementById("lng").value=latLng.lng();
+  document.getElementById("lat2").value=latLng.lat();
+  document.getElementById("lng2").value=latLng.lng();
 
 
 }
@@ -40,20 +41,24 @@ function updateMarkerAddress(str) {
 }
 
 function initialize() {
- latLng = new google.maps.LatLng(40.7257393, -74.0061891);
-  var map = new google.maps.Map(document.getElementById('mapCanvas'), {
+ var map = new google.maps.Map(document.getElementById('mapCanvas'), {
     zoom: 14,
     center: latLng,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   });
-  var marker = new google.maps.Marker({
+  if (navigator.geolocation)
+    {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      latLng = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+
+    var marker = new google.maps.Marker({
     position: latLng,
     title: 'Point A',
     map: map,
     draggable: true
-  });
+    });
 
-  // Update current position info.
+    // Update current position info.
   updateMarkerPosition(latLng);
   geocodePosition(latLng);
 
@@ -71,6 +76,34 @@ function initialize() {
     updateMarkerStatus('Drag ended');
     geocodePosition(marker.getPosition());
   });
+
+      map.setCenter(latLng);
+    },function() {
+      handleNoGeolocation(true);});
+
+    }
+  else{
+    //x.innerHTML="Geolocation is not supported by this browser.";
+  handleNoGeolocation(false);
+      }
+      
+  function handleNoGeolocation(errorFlag) {
+  if (errorFlag) {
+    var content = 'Error: The Geolocation service failed.';
+  } else {
+    var content = 'Error: Your browser doesn\'t support geolocation.';
+  }
+
+  var options = {
+    map: map,
+    position: new google.maps.LatLng(60, 105),
+    content: content
+  };
+
+  var infowindow = new google.maps.InfoWindow(options);
+  map.setCenter(options.position);
+}
+
 }
 
 // Onload handler to fire off the app.
@@ -95,13 +128,13 @@ google.maps.event.addDomListener(window, 'load', initialize);
     margin-bottom: 5px;
   }
   </style>
+  <div class="container" >
 
-  <div class="container">
 
   <form action="insert_note.php" method="post">
-  <div id="mapCanvas"></div>
+  <div id="mapCanvas" ></div>
 
-  <div id="infoPanel" style="display:none" >
+  <div id="infoPanel" style="display:none"  >
     <b>Marker status:</b>
     <div id="markerStatus"><i>Click and drag the marker.</i></div>
     <b>Current position:</b>
@@ -109,7 +142,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
     <label for="latitude">latitude:</label><br>
    <input id="lat2" type="text" name="lat2" value="" maxlength="100" /><br>
    <label for="longitude">longitude:</label><br>
-   <input id="log2" type="text" name="log2" value="" maxlength="100" /><br>
+   <input id="lng2" type="text" name="lng2" value="" maxlength="100" /><br>
     <b>Closest matching address:</b>
     <div id="address"></div>
     <div>
@@ -119,7 +152,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 </form>
 
-</div>
+
 </body>
 </html>
 

@@ -30,7 +30,8 @@ if (mysqli_connect_errno()) {
 
     <!-- Custom styles for this template -->
     <link href="../include/css/carousel.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="include/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../include/css/style.css">
+    
 
    
   </head>

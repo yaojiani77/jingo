@@ -16,7 +16,7 @@ if($_POST) {
 	if($result)
 			{
 				// Once the user is added re-direct him to userhome.php
-				header("Location: home.php");
+				header("Location: index.php");
 			}
 	else {
 		echo "User cannot be added this way";

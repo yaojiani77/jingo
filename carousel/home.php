@@ -1,21 +1,26 @@
 <?php
 require_once('header.php');
-require_once('clickgeo.php');
+
+
 require_once('time_ago.php');
 
 $query = "SELECT notetext, Utime FROM USER,NOTE WHERE USER.uid=NOTE.uid and email='".$email."'";
 
 $result = $mysqli->query($query);
 
+require_once('clickgeo.php');
+?>
+</div>
+<?php
 
 
 while ($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){ ?>
 
 
-<div class="container">
 
+<div class="container">
 <!--Notes-->
-<div class="span10 well">
+<div class="span10 well" >
 	<div class="row">
 		<div class="span1 left"><a href="#" class="thumbnail"><img src="../include/img/users/user.jpg" alt=""></a></div>
 		<div class="span5" >
@@ -30,7 +35,7 @@ while ($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){ ?>
 	</div>
 	<!--row -->
 </div>
-<!-- span 3 well-->
+<!-- span 10 well-->
 </div>
 <!--container-->
 

@@ -2,6 +2,8 @@
 
  <link rel="stylesheet" type="text/css" href="../include/css/bootstrap.css">
 
+
+<div class="container">
 	<div class ="hero-unit">
 			<h1>Create a new user</h1>
 			<p>
@@ -84,4 +86,5 @@
         </div>
       </div>
 	</div>
+</div>
 <?php require_once('footer.php') ; ?>

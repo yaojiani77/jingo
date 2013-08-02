@@ -3,21 +3,29 @@ require_once('header.php');
 require_once('time_ago.php');
 
 
-
-
+if ($_POST) {
 //store notes
 $lat= $_POST['lat'];
 $lng= $_POST['lng'];
 $note=$_POST['note'];
+$email2=$_POST['email'];
+//echo $email2;
 
+//if($note){
 
-if($note){
+$query = "SELECT uid FROM USER WHERE  email='".$email2."'";
+$uid = $mysqli->query($query);
+$row=$uid->fetch_array(MYSQLI_BOTH);
+//echo $row['uid'];
+
+	
 
 
 $query2= "INSERT INTO NOTE (uid,notetext,x,y,x1,y1)
-VALUES ('7','$_POST[note]','$_POST[lat]','$_POST[lng]','40','50')";
+VALUES ('$row[uid]','$_POST[note]','$_POST[lat]','$_POST[lng]','40','50')";
 
 $mysqli->query($query2);
+
 
 }
 
@@ -27,22 +35,26 @@ $mysqli->query($query2);
 
 
 
-
+<!--
 <div class="container ">
+-->
 	<?php require_once('clickgeo.php');?>
  <style>
   #mapCanvas {
-    width: 500px;
-    height: 300px;
-    float:left;
+    width: 66%;
+    height: 312px;
+    float: left;
+
+ 
   
   }
   </style>
 
 
-<!--post notes-->
 
-<div class="span5 well ">
+<!--post notes-->
+<div style="float:left;margin-left:10px;width=200px" >
+<div class="span5 well " >
 	<div class="row">
 		<div class="span2 left" ><a href="#" class="thumbnail"><img src="../include/img/users/user.jpg" alt=""></a></div>
 		<div class="span5 ">
@@ -52,13 +64,15 @@ $mysqli->query($query2);
 		<div class="span3 left">
 			<span class=" badge badge-warning"><!--<?php echo $row3['ncount'] ;?>--> notes</span> 
 			<span class=" badge badge-info"><!--<?php echo $row_follower_count['fcount']?>--> followers</span>
-			<a href="set_filters.php"><span class="badge badge-inverse">filters</span></a>
+			<a href="#"><span class="badge badge-inverse" id="filters">filters</span></a>
 		</div>
 		<div class="span4 " style="padding-left:8px;" >
 		    <form accept-charset="UTF-8" action="user.php" id="post-note" method="POST">
 		    	<!-- hidden type for location-->
 		    	<!-- <input type="hidden" value="" name="lat" id="lat"/>
 		    	<input type="hidden" value="" name="lon" id="lon"/> -->
+		    	<input type="hidden" value=<?php echo $email; ?> name="email" />
+
 
 		        <textarea class="span4" id="new_message" name="note"
 		        placeholder="Type in your message" rows="4"></textarea>
@@ -159,6 +173,7 @@ $mysqli->query($query2);
 		</div>
 	</div>
 </div>
+</div>
 
 
 
@@ -179,7 +194,7 @@ while ($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){ ?>
 
 
 <!--Notes-->
-<div class="container">
+<div style="float:left">
 <div class="span10 well ">
 	<div class="row">
 		<div class="span1 left"><a href="#" class="thumbnail"><img src="../include/img/users/user.jpg" alt=""></a></div>
@@ -197,14 +212,13 @@ while ($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){ ?>
 </div>
 <!-- span 3 well-->
 </div>
-</div>
-<!--container-->
 
 
 
 	
 <?php  } ?>
 
-
+<!--container-->
+</div>
 
 <?php require_once('footer.php'); ?>
