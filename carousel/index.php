@@ -27,7 +27,7 @@
     	      <span class="icon-bar"></span>
     	      <span class="icon-bar"></span>
     	    </button>
-            <a class="navbar-brand" href="#">Project name</a>
+            <a class="navbar-brand" href="#">JINGO</a>
             <div class="nav-collapse collapse">
               <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Home</a></li>
@@ -69,8 +69,8 @@
           <img data-src="holder.js/1500x500/auto/#777:#7a7a7a/text:First slide" alt="">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Example headline.</h1>
-              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <h1>Welcome to Jingo World!</h1>
+              <p>The main idea in jingo is that users can publish information (small messages or notes), and then link these notes to certain locations and certain times.</p>
               <p><a class="btn btn-large btn-primary" href="create_new_user.php">Sign up today</a></p>
             </div>
           </div>

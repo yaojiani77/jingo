@@ -29,10 +29,10 @@ function updateMarkerStatus(str) {
   document.getElementById('markerStatus').innerHTML = str;
 }
 
+//output lat and lng to html form in user.php
 function updateMarkerPosition(latLng) {
-  document.getElementById("lat2").value=latLng.lat();
-  document.getElementById("lng2").value=latLng.lng();
-
+  document.getElementById("lat").value=latLng.lat();
+  document.getElementById("lng").value=latLng.lng();
 
 }
 
@@ -129,9 +129,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
   }
   </style>
   <div class="container" >
-
-
-  <form action="insert_note.php" method="post">
+  <form >
   <div id="mapCanvas" ></div>
 
   <div id="infoPanel" style="display:none"  >
@@ -139,10 +137,10 @@ google.maps.event.addDomListener(window, 'load', initialize);
     <div id="markerStatus"><i>Click and drag the marker.</i></div>
     <b>Current position:</b>
     <div id="info"></div>
-    <label for="latitude">latitude:</label><br>
-   <input id="lat2" type="text" name="lat2" value="" maxlength="100" /><br>
+   <label for="latitude">latitude:</label><br>
+   <input id="lat2" type="text" name="lat" value="" maxlength="100" /><br>
    <label for="longitude">longitude:</label><br>
-   <input id="lng2" type="text" name="lng2" value="" maxlength="100" /><br>
+   <input id="lng2" type="text" name="lng" value="" maxlength="100" /><br>
     <b>Closest matching address:</b>
     <div id="address"></div>
     <div>
@@ -151,6 +149,8 @@ google.maps.event.addDomListener(window, 'load', initialize);
   </div>
 
 </form>
+
+
 
 
 </body>

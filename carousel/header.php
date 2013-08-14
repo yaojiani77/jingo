@@ -31,6 +31,10 @@ if (mysqli_connect_errno()) {
     <!-- Custom styles for this template -->
     <link href="../include/css/carousel.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../include/css/style.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen"
+     href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
+   
     
 
    
@@ -53,7 +57,7 @@ if (mysqli_connect_errno()) {
     	      <span class="icon-bar"></span>
     	      <span class="icon-bar"></span>
     	    </button>
-            <a class="navbar-brand" href="#">Project name</a>
+            <a class="navbar-brand" href="#">JINGO</a>
             <div class="nav-collapse collapse">
               <ul class="nav navbar-nav">
                 <li class="active"><a href="home.php">Home</a></li>
