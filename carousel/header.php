@@ -15,6 +15,7 @@ if (mysqli_connect_errno()) {
 
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -77,6 +78,8 @@ if (mysqli_connect_errno()) {
                 </li>
                 <li><a href="user.php"><?php echo $email ;?></a></li>
                 <li><a href="signout.php">Sign out</a></li>
+                <!--
+                <li style="top:14px;"><input id="search" type="text" placeholder="Search"  style="float:right;border:2px solid;border-radius:5px; "></li>-->
               </ul>
             </div>
           </div>

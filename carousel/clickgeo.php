@@ -128,7 +128,10 @@ google.maps.event.addDomListener(window, 'load', initialize);
     margin-bottom: 5px;
   }
   </style>
+
+  
   <div class="container" >
+    <!--
   <form >
   <div id="mapCanvas" ></div>
 
@@ -149,6 +152,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
   </div>
 
 </form>
+-->
 
 
 

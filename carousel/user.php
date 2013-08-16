@@ -141,7 +141,7 @@ xmlhttp.onreadystatechange=function()
     	existingdiv=document.getElementById("addnote");
     	var x=$("#addnote").parent();
     	x.append($(existingdiv).clone().show()).html();
-    document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+    //document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
 
 
     }
@@ -156,7 +156,7 @@ xmlhttp.send();
 
   </script>
 
-
+<div id="mapCanvas"></div>
 
 <!--post notes-->
 <div  style="float:left;margin-left:10px;width=200px" >
@@ -266,7 +266,7 @@ xmlhttp.send();
 				<!-- div#range-->
 				<div id="range" style="display:none;">
 					radius:	<input type="text" name="radius" class="input-medium" value="" maxlength="100" />
-					<div id="mapCanvas"></div>
+					
 					<div id="infoPanel">
 					    
 					    <div id="info"></div>
@@ -291,7 +291,9 @@ xmlhttp.send();
 				
 			  <button class="btn btn-success" type="button" onclick="showHint(this.form);">Post Note</button>
 		    </form>
+		    <!--
 		    <p>Suggestions: <span id="txtHint"></span></p>
+		-->
 
 		</div>
 	</div>
