@@ -9,7 +9,9 @@ $query = "SELECT notetext, Utime FROM USER,NOTE WHERE USER.uid=NOTE.uid and emai
 $result = $mysqli->query($query);
 
 require_once('clickgeo.php');
+require_once('geo2.php');
 ?>
+
 
 <script type="text/javascript">
 var responseTextArray;
@@ -33,7 +35,7 @@ xmlhttp.onreadystatechange=function()
   {
   if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
-      document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+     // document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
       responseTextArray = xmlhttp.responseText.split(",");
     document.getElementById("amount").innerHTML=responseTextArray[0];
     document.getElementById("lastupdated").innerHTML=responseTextArray[1];
@@ -70,7 +72,7 @@ xmlhttp.onreadystatechange=function()
   {
   if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
-      document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+      //document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
       for (var i = 0; i < 25; ) {
      
     document.getElementById("img").src="../include/img/house"+i+".png"; 
@@ -86,19 +88,23 @@ xmlhttp.onreadystatechange=function()
       x.append($(existingdiv).clone().show()).html();
       i=i+5;
     }
+    
+    initialize2();//update map from geo2.php
+
+    
     }
   }
 xmlhttp.open("GET","zillow_comp.php?zpid="+responseTextArray[5],true);
 xmlhttp.send();
 }
 
-
+console.log(responseTextArray[5]);
 
   </script>
 
 
  <form >
-  <div id="mapCanvas" style="position:relative;z-index:1"></div>
+  <div id="mapCanvas" style="position:relative;z-index:1;height:400px;"></div>
 
   <div id="infoPanel" style="display:none"  >
     <b>Marker status:</b>
@@ -118,10 +124,12 @@ xmlhttp.send();
 
 </form >
 
-<form style="position:relative;right:450px;bottom:300px;z-index:2;opacity:0.7;">
-<input id="search" type="text" placeholder="address" value="2114 Bigelow Ave N" style="float:right;border:2px solid;border-radius:5px; ">
-<input id="search" type="text" placeholder="citystatezip" value="Seattle, WA" style="float:right;border:2px solid;border-radius:5px; ">
+<form style="position:relative;right:450px;bottom:400px;z-index:2;opacity:0.7;">
+ 
+<input id="search" type="text" placeholder="address" value="932 E 79th St" style="float:right;border:2px solid;border-radius:5px; ">
+<input id="search" type="text" placeholder="citystatezip" value="Brooklyn, NY" style="float:right;border:2px solid;border-radius:5px; ">
 <button  style="float:right;border:2px solid;border-radius:5px; " type="button" onclick="showZestimate(this.form);">Search</button>
+ <input type="button" value="compare" onclick="showComp();" style="float:right;border:2px solid;border-radius:5px; ">
  </form>
 
  <p>Suggestions: <span id="txtHint"></span></p>
@@ -137,10 +145,10 @@ xmlhttp.send();
     <div class="span2 left"><a href="#" class="thumbnail"><img id="img" src="../include/img/house.png" alt=""></a></div>
     <div class="span6" >
       <p><a href="#" id="location"><strong ></strong></a></p>
-      <p><strong>House for sale by owner: $</strong><strong id="amount"></strong></p>
+      <p><strong>House for sale by owner: $</strong><a href="http://www.feelmymoney.com/homebuyer#?type=mortgage"><strong id="amount"></strong></a></p>
         <span class="pull-right"><small>last updated: </small><small id="lastupdated"></small></span>
     </div>
-    <input type="button" value="compare" onclick="showComp();" style="position:relative;left:350px;bottom:60px">
+   
     
       <p></p>
     
